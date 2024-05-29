@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Change Colors</title>
+<style>
+  #h2, #div {
+    color: black;
+    background-color: yellow;
+    cursor: pointer;
+}
+
+p {
+    color: red;
+    background-color: white;
+    cursor: pointer;
+}
+
+</style>
+</head>
+<body>
+<h2 id="h2" onclick="changeColorById('h2')">Доступ до властивостей і методів</h2>
+<p class="p" onclick="changeColorAll()">Колекція all</p>
+<div id="div" onclick="changeColorById('div')">Метод getElementById()</div>
+
+<script>
+function changeColorById(id) {
+      var element = document.getElementById(id);
+      if (element.style.color === 'black' || !element.style.color) {
+      element.style.color = 'white';
+      element.style.backgroundColor = 'blue';
+      } else {
+      element.style.color = 'black';
+      element.style.backgroundColor = 'yellow';
+      }
+}
+
+function changeColorAll() {
+    var containers = document.getElementsByClassName('p');
+    for (var i = 0; i < containers.length; i++) {
+        var element = containers[i];
+        var computedStyle = window.getComputedStyle(element);
+        var color = computedStyle.color;
+        if (color === 'rgb(255, 0, 0)' || color === 'red') {
+            element.style.color = 'white';
+            element.style.backgroundColor = 'green';
+        } else {
+            element.style.color = 'red';
+            element.style.backgroundColor = 'white';
+        }
+    }
+}
+</script>
+</body>
+</html>
